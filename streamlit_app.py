@@ -10,10 +10,12 @@ st.set_page_config(
 )
  
 # Add Title
-st.title("Use Pygwalker In Streamlit")
- 
-# Import your data
-df = pd.read_csv("https://kanaries-app.s3.ap-northeast-1.amazonaws.com/public-datasets/bike_sharing_dc.csv")
+st.title("Use Pygwalker In Streamlit with BIMOne Data")
+
+
+path = "https://drive.google.com/uc?id=1xrg4HFhb6oHuG7tU0ZB6SFyv3eksETcI"
+df = pd.read_csv(path, parse_dates=['date'], dayfirst=True, encoding_errors='ignore')
+df = df.sort_values('date')
  
 # Generate the HTML using Pygwalker
 pyg_html = pyg.walk(df, return_html=True)
